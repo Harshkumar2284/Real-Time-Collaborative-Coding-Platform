@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* BACKGROUND TEXTS */
+body{
+  background: #0D1117;
+}
+
+.secondary-bg{
+  background-color: #161B22;
+}
+.elevated{
+  background-color: #21262D;
+}
+
+/* TEXT COLORS */
+.primary-text{
+  color: #E6EDF3;
+}
+.secondary-text{
+  color: #8B949E;
+}
+
+
+/* PRIMARY ACCENTS */
+.primary-accent{
+  color: #2F81F7;
+}
+.primary-accent:hover{
+  color: #1F6FEB;
+}
+
