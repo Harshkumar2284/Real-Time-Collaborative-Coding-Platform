@@ -14,7 +14,8 @@ export const register = async (req, res) => {
         const user = await User.create({
             username,
             email,
-            password: hash
+            password: hash,
+            recentRooms: []
         })
         res.status(201).json({ message: "Your account has been succesfully created " })
     }
@@ -22,28 +23,29 @@ export const register = async (req, res) => {
 }
 
 
-export const login = async(req,res)=>{
+export const login = async (req, res) => {
     try {
-        const {identifier, password} = req.body
-        const check  = await User.findOne({
-            $or:[{username:identifier}, {email:identifier}]
+        const { identifier, password } = req.body
+        const check = await User.findOne({
+            $or: [{ username: identifier }, { email: identifier }]
         })
-        if(check){
-            const passCheck = await bcrypt.compare(password,check.password)
-            if(passCheck){
-                const accessToken= jwt.sign(
-                    {username:check.username},
+        if (check) {
+            const passCheck = await bcrypt.compare(password, check.password)
+            if (passCheck) {
+                const accessToken = jwt.sign(
+                    { id: check._id, username: check.username }, // Included 'id' here
                     process.env.ACCESS_SECRET,
-                )
-                
+                    { expiresIn: '7d' }
+                );
+
                 res.status(201).json(accessToken)
-            }else{
-                res.status(400).json({message:"Credentials do not match"})
+            } else {
+                res.status(400).json({ message: "Credentials do not match" })
             }
-        }else{
-            res.status(400).json({message:"Account does not exist"})
+        } else {
+            res.status(400).json({ message: "Account does not exist" })
         }
     } catch (error) {
-        
+
     }
 }

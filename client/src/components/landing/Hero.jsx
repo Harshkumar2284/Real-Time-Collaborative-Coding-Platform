@@ -4,12 +4,11 @@ import Button from '../ui/Button'
 
 export default function Hero() {
     return (
-        <div className='w-full flex-col items-center mt-20 mb-20'>
-            <div className='w-3/4 ml-40 flex justify-evenly'>
-                <img className=' rounded' src={coding} height={300} width={700} />
+        <div className='w-full flex-col jutify-center items-center mt-20 mb-20'>
+            <div className='w-3/4 ml-40 flex justify-center'>
                 <div className='mt-10'>
-                    <p className='primary-text text-5xl font-semibold'>Code Together</p>
-                    <p className='primary-text text-6xl font-bold'>Instantly.</p>
+                    <p className='primary-text text-7xl font-bold'>Code Together</p>
+                    <p className='primary-text text-8xl font-bold'>Instantly.</p>
                 </div>
             </div>
             <div className='flex'>
